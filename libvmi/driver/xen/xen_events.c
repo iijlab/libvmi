@@ -893,10 +893,10 @@ status_t process_singlestep(vmi_instance_t vmi, vm_event_compat_t *vmec)
 #endif
 
     event->ss_event.gfn = vmec->singlestep.gfn;
-    event->ss_event.offset = vmec->data.regs.x86.rip & VMI_BIT_MASK(0,11);
-    event->ss_event.gla = vmec->data.regs.x86.rip;
+    event->ss_event.offset = vmec->data.regs.arm.pc & VMI_BIT_MASK(0,11);
+    event->ss_event.gla = vmec->data.regs.arm.pc;
 
-    event->x86_regs = &vmec->data.regs.x86;
+    event->arm_regs = &vmec->data.regs.arm;
     event->slat_id = vmec->altp2m_idx;
     event->vcpu_id = vmec->vcpu_id;
     event->page_mode = vmec->pm;

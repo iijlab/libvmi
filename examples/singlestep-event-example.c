@@ -46,6 +46,18 @@ event_response_t single_step_callback(vmi_instance_t vmi, vmi_event_t *event)
            event->ss_event.gfn,
            event->ss_event.gla);
 
+    if (vmi_get_library_arch() == VMI_ARCH_ARM64) {
+        printf("ttbr0: %"PRIx64"\n", event->arm_regs->ttbr0);
+        printf("ttbr1: %"PRIx64"\n", event->arm_regs->ttbr1);
+        uint64_t pc = event->arm_regs->pc;
+        addr_t pc_pa;
+        vmi_pagetable_lookup(vmi, event->arm_regs->ttbr1, pc, &pc_pa);
+        uint32_t opcode;
+
+        vmi_read_32_pa(vmi, pc_pa, &opcode);
+        printf("%"PRIx64": %"PRIx32"\n", pc, opcode);
+    }
+
     return 0;
 }
 
@@ -98,6 +110,7 @@ int main (int argc, char **argv)
         printf("Failed to init LibVMI library.\n");
         goto error_exit;
     }
+    vmi_init_paging(vmi, 0);
 
     printf("LibVMI init succeeded!\n");
 
