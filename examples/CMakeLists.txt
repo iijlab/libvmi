@@ -62,6 +62,9 @@ target_link_libraries(vmi-dump-memory vmi_shared)
 add_executable(vmi-module-list module-list.c)
 target_link_libraries(vmi-module-list vmi_shared)
 
+add_executable(svc-event-example svc-event-example.c)
+target_link_libraries(svc-event-example vmi_shared)
+
 if (ENABLE_WINDOWS)
     add_executable(vmi-win-guid win-guid.c)
     target_link_libraries(vmi-win-guid vmi_shared)

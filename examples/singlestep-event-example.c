@@ -55,7 +55,9 @@ event_response_t single_step_callback(vmi_instance_t vmi, vmi_event_t *event)
         uint32_t opcode;
 
         vmi_read_32_pa(vmi, pc_pa, &opcode);
-        printf("%"PRIx64": %"PRIx32"\n", pc, opcode);
+
+        printf("%"PRIx64": %"PRIx32"%s\n", pc, opcode,
+            opcode == 0xd65f03c0 ? "  // ret" : "");
     }
 
     return 0;

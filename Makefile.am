@@ -250,7 +250,8 @@ endif
                        examples/step-event-example \
                        examples/xen-emulate-response \
                        examples/breakpoint-emulate-example \
-                       examples/read-disk-example
+                       examples/read-disk-example \
+                       examples/svc-event-example
 
     examples_map_symbol_SOURCES = examples/map-symbol.c
     examples_map_addr_SOURCES = examples/map-addr.c
@@ -262,6 +263,7 @@ endif
     examples_xen_emulate_response_SOURCES = examples/xen-emulate-response.c
     examples_breakpoint_emulate_example_SOURCES = examples/breakpoint-emulate-example.c
     examples_read_disk_example_SOURCES = examples/read-disk-example.c
+    examples_svc_event_example_SOURCES = examples/svc-event-example.c
 
     noinst_PROGRAMS += examples/va-pages
     examples_va_pages_SOURCES = examples/va-pages.c
