@@ -213,6 +213,9 @@ if EXAMPLES
                     examples/vmi-dump-memory \
                     examples/vmi-cpuid
 
+    bin_PROGRAMS += examples/singlestep-event-example \
+                    examples/svc-event-example
+
 if WINDOWS
     bin_PROGRAMS += examples/vmi-win-guid \
                     examples/vmi-win-offsets
@@ -245,13 +248,11 @@ endif
                        examples/map-addr \
                        examples/event-example \
                        examples/msr-event-example \
-                       examples/singlestep-event-example \
                        examples/interrupt-event-example \
                        examples/step-event-example \
                        examples/xen-emulate-response \
                        examples/breakpoint-emulate-example \
-                       examples/read-disk-example \
-                       examples/svc-event-example
+                       examples/read-disk-example
 
     examples_map_symbol_SOURCES = examples/map-symbol.c
     examples_map_addr_SOURCES = examples/map-addr.c
